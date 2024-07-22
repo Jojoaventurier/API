@@ -4,16 +4,12 @@ const inputCP = document.querySelector(".cp")
 const selectVille = document.querySelector(".ville")
 
 
-
-// var map = L.map('map').setView(`${ville.centre.coordinates[0]}`, `${ville.centre.coordinates[1]}`, 13);
 var map = L.map('map')//.setView([51.505, -0.09], 13);
 
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map);
-
-
 
 // Ajoute un écouteur d'évènement "input" (pendant la saisie) au champ de code postal
 inputCP.addEventListener("input", () => {
@@ -41,6 +37,7 @@ inputCP.addEventListener("input", () => {
                 option.innerHTML = `${ville.nom}`
                 // Ajoute l'option à la liste de sélection de ville
                 selectVille.appendChild(option)
+
                 let marker = new L.marker([`${ville.centre.coordinates[1]}`, `${ville.centre.coordinates[0]}`]).addTo(map);
             })
         })
